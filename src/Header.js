@@ -23,8 +23,8 @@ function Header() {
                 <input type="text"/>
             </div>
         </div>
-        <div className="header__main">
-            <div className="header__option">
+        <div className="header__center">
+            <div className="header__option--active">
                  <HomeIcon fontSize="large" />
             </div>
             <div className="header__option">
