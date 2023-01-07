@@ -1,5 +1,4 @@
 
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import "./Sidebar.css";
 import SidebarRow from './SidebarRow';
@@ -14,7 +13,7 @@ import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 function Sidebar() {
   return (
     <div className="sidebar">
-        <SidebarRow src="" title="Simona Ya" />
+        <SidebarRow src="https://simonadev.co.uk/wp-content/uploads/2022/03/IMG_20211225_150234-1-768x1024.jpg" title="Simona Ya" />
         <SidebarRow Icon={LocalHospitalIcon} title="Covid-19 Information Center" />
         <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
         <SidebarRow Icon={PeopleIcon} title="Friends" />
