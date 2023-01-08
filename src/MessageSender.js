@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./MessageSender.css";
 import { Avatar } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
@@ -6,6 +6,8 @@ import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 
 function MessageSender() {
+
+    const [input, setInput] = useState ("");
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -17,6 +19,8 @@ function MessageSender() {
             <Avatar />
             <form>
                 <input
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
                   className="messageSender__input"
                   placeholder={`What's on your mind?`}
                 />
