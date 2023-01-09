@@ -13,8 +13,8 @@ function MessageSender() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setInput("");
-        setImageUrl("");
+        setInput("");      //resets input field after pressed enter.
+        setImageUrl("");   //resets imageUrl field after press enter.
     };
 
 
