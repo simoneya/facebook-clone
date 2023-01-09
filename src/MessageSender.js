@@ -8,10 +8,15 @@ import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 function MessageSender() {
 
     const [input, setInput] = useState ("");
+    const [imageUrl, setImageUrl] = useState("");
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-    }
+
+        setInput("");
+        setImageUrl("");
+    };
+
 
   return (
     <div className="messageSender">
@@ -20,11 +25,15 @@ function MessageSender() {
             <form>
                 <input
                   value={input}
-                  onChange={e => setInput(e.target.value)}
+                  onChange={(e) => setInput(e.target.value)}
                   className="messageSender__input"
                   placeholder={`What's on your mind?`}
                 />
-                <input placeholder="image URL (Optional)" />
+                <input 
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  placeholder="image URL (Optional)" />
+
                 <button onClick={handleSubmit} type="submit">
                     Hidden Submit
                 </button>
