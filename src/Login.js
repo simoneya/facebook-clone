@@ -1,11 +1,17 @@
 import React from 'react';
 import "./Login.css";
 import { Button } from '@mui/material';
+import { auth, provider } from "./firebase";
 
 function Login() {
 
     const signIn = () => {
-        //signin stuff
+       
+      auth
+      .signInWithPopup(provider)
+      .then(result => {
+        console.log(result);
+      }).catch(error => alert(error.message));
     };
 
   return (
