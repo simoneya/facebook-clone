@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Feed.css";
 import StoryReel from './StoryReel';
 import MessageSender from "./MessageSender";
@@ -9,9 +9,13 @@ function Feed() {
 
   const [posts, setPosts] = useState([]);
 
+  //connection to database starts:
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot)
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() })))
+    })
   }, [])
+  //connection to database ends here.
   
 
   return (
