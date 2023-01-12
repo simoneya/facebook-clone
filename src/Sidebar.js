@@ -9,11 +9,17 @@ import ChatIcon from '@mui/icons-material/Chat';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { useStateValue } from './StateProvider';
 
 function Sidebar() {
+
+  const [{user}, dispatch] = useStateValue();
+
   return (
     <div className="sidebar">
-        <SidebarRow src="https://simonadev.co.uk/wp-content/uploads/2022/03/IMG_20211225_150234-1-768x1024.jpg" title="Simona Ya" />
+        <SidebarRow 
+          src={user.photoURL} 
+          title={user.displayName} />
         <SidebarRow Icon={LocalHospitalIcon} title="Covid-19 Information Center" />
         <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
         <SidebarRow Icon={PeopleIcon} title="Friends" />
