@@ -11,34 +11,31 @@ function Feed() {
 
   //connection to database starts:
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection("posts").onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() })))
     })
   }, [])
   //connection to database ends here.
+  //need to add post from your firebase database manually and then it will show on the app.
   
 
   return (
     <div className="feed">
         <StoryReel />
         <MessageSender />
-        <Post
-            profilePic={"https://simonadev.co.uk/wp-content/uploads/2022/03/IMG_20211225_150234-1-768x1024.jpg"}
-            message="Wow this works"
-            timestamp="This is a timestamp"
-            username="simdev"
-            image={"https://www.creatopy.com/blog/wp-content/uploads/2019/07/where-are-stories-on-facebook-600x600.png"}
+
+        { posts.map((post) => (
+          <Post
+            key={post.id}
+            profilePic={post.data.profilePic}
+            message={post.data.message}
+            timestamp={post.data.timestamp}
+            username={post.data.username}
+            image={post.data.image}
          />
-        <Post 
-            profilePic={"https://simonadev.co.uk/wp-content/uploads/2022/03/IMG_20211225_150234-1-768x1024.jpg"}
-            message="Wow this works again"
-            timestamp="This is a timestamp 2"
-            username="simdev"
-            image={"https://img.ws.mms.shopee.com.br/c381cf731c2794174f7a1e6ef4091597"}
-        />
-        <Post />
+        ))}
     </div>
-  )
+  );
 }
 
 export default Feed;
