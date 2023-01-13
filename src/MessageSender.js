@@ -5,6 +5,8 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import { useStateValue } from './StateProvider';
+import db from "./firebase";
+import firebase from "firebase";
 
 function MessageSender() {
 
@@ -14,6 +16,15 @@ function MessageSender() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        //programatically push post once you fill the fields.
+        db.collection("posts").add({
+            message: input,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(), //using timestamp from firebase because of time differences.
+            profilePic: user.photoURL,
+            username: user.displayName,
+            image: imageUrl,
+        })
 
         setInput("");      //resets input field after pressed enter.
         setImageUrl("");   //resets imageUrl field after press enter.
